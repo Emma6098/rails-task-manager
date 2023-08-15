@@ -4,13 +4,17 @@
 <%@tasks.each do |task|%>
   <li>
     <%if task.completed%>
-    <input type="checkbox" id="task" checked>
-    <label for="task"><%= link_to task.title, task_path(task) %></label>
-    <%=link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <input type="checkbox" id="task" checked>
+      <label for="task"><%= link_to task.title, task_path(task) %></label>
+      <%=link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+        <i class="fa-solid fa-trash"></i>
+      <%end%>
     <%else%>
-    <input type="checkbox" id="task">
-    <label for="task"><%=link_to task.title, task_path(task)%></label>
-    <%=link_to "Delete", task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+      <input type="checkbox" id="task">
+      <label for="task"><%=link_to task.title, task_path(task)%></label>
+      <%=link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+        <i class="fa-solid fa-trash"></i>
+      <%end%>
     <%end%>
   </li>
 <%end%>
